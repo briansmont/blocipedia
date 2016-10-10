@@ -32,3 +32,5 @@ end
   gem 'bootstrap-sass'
 # Devise gem is a flexible authentification solution for Rails.
   gem 'devise'
+# Figaro gem which privatizes passwords
+  gem 'figaro', '1.0'
