@@ -30,3 +30,5 @@ end
   gem 'turbolinks'
 # Bootstrap - sass styling
   gem 'bootstrap-sass'
+# Devise gem is a flexible authentification solution for Rails.
+  gem 'devise'
