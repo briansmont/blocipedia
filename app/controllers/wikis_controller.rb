@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
   
   before_action :authenticate_user!, except: [:index, :show]
-  after_action :verify_authorized, except: [:index, :show]
+  after_action :verify_authorized, except: [:index]
   
   def index
     @wikis = Wiki.all
@@ -66,5 +66,8 @@ class WikisController < ApplicationController
   def wiki_params
     params.require(:wiki).permit(:title, :body, :public)
   end
+  
+
+  
   
 end

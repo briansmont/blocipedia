@@ -1,5 +1,5 @@
 class WikiPolicy < ApplicationPolicy
-  attr_reader :user, :wiki_params
+  attr_reader :user, :wiki
   
   def initialize(user, wiki)
     @user = user
@@ -7,23 +7,23 @@ class WikiPolicy < ApplicationPolicy
   end
   
   def update?
-    user.present?
+    user.present? || user.admin?
   end
   
   def new?
-    user.present?
+    user.present? || user.admin?
   end
   
   def create?
-    user.present?
+    user.present? || user.admin?
   end
   
   def show?
-    user.present?
+    user.present? || !user.present?
   end
   
   def edit?
-    user.present?
+    user.present? || user.admin?
   end
   
   def destroy?
