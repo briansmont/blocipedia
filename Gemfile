@@ -36,3 +36,5 @@ end
   gem 'devise'
 # Figaro gem which privatizes passwords
   gem 'figaro', '1.0'
+# Pundit will help with authorizations
+  gem "pundit"

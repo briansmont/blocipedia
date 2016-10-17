@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
   
   
   before_save { self.email = email.downcase if email.present? }
+  after_initialize { self.role ||= :standard_member }
   
+  enum role: [:standard_member, :premium_member, :admin]
   
   private
   def send_user_emails
