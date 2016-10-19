@@ -40,3 +40,5 @@ end
   gem 'figaro', '1.0'
 # Pundit will help with authorizations
   gem "pundit"
+# stripe integrates payment processing, verifying ccards & securing user data
+  gem "stripe"
