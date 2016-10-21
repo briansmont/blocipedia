@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+
   get 'charges/new'
-  resources :charges, only: [:new, :create, :cancel]
+  resources :charges, only: [:new, :create]
 
   resources :wikis
 
