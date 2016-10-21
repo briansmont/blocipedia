@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
   
   def create
+    @user = current_user
     customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
@@ -11,6 +12,8 @@ class ChargesController < ApplicationController
       description: "Premium Member - #{current_user.email}",
       currency: 'usd'
     )
+    
+    @user.role = :premium_member
     flash[:notice] = "Congratulations #{current_user.email}! You are now a Premium Member with new abilities!"
     redirect_to root_path
     
@@ -27,4 +30,9 @@ class ChargesController < ApplicationController
       amount: 10_00
     }
   end
+  
+  def upgrade_user_role
+    @user.role = "premium_member"
+  end
+  
 end
