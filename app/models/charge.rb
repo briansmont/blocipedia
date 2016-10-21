@@ -3,8 +3,6 @@ class Charge < ActiveRecord::Base
   
   after_create :upgrade_user_role
   
-  def upgrade_user_role
-    current_user.role == "premium_member"
-  end
+  
   
 end

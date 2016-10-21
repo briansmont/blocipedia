@@ -17,6 +17,13 @@
         <li class="pull-right"><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
         <li class="pull-right"><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
         <li class="pull-right user-name-style">Signed in as: <u><%= current_user.email %></u> |</li>
+        <li class="pull-right">
+          <% if current_user.role == 'standard_member' %>
+            <%= link_to "Become a Premium Member!", new_charge_path %>
+          <% else %>
+            <%= link_to "Downgrade to standard membership", edit_user_registration_path %>
+          <% end %>
+        </li>
       <% else %>
         <li class="pull-right"><%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %></li>
         <li class="pull-right"><%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %></li>

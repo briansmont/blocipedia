@@ -13,7 +13,7 @@ class ChargesController < ApplicationController
       currency: 'usd'
     )
     
-    @user.role = :premium_member
+    @user.update_attributes(role: "premium_member")
     flash[:notice] = "Congratulations #{current_user.email}! You are now a Premium Member with new abilities!"
     redirect_to root_path
     
@@ -31,8 +31,6 @@ class ChargesController < ApplicationController
     }
   end
   
-  def upgrade_user_role
-    @user.role = "premium_member"
-  end
+  
   
 end

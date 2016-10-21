@@ -12,4 +12,5 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You're not authorized for that action."
     redirect_to(@wiki)
   end
+  
 end
