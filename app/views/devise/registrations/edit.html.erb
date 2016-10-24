@@ -36,8 +36,9 @@
   </div>
 <% end %>
 
-<h3>Downgrade Account?</h3>
+
 <% if current_user.role == 'premium_member' %>
+  <h3>Downgrade Account?</h3>
   <p> <%= link_to "Downgrade to standard membership", downgrade_user_path(current_user), data: {confirm: "Are you sure?"}, method: :post %></p>
 
 <% end %>

@@ -19,6 +19,7 @@
         <%= f.label :body %>
         <%= f.text_field :body, class: 'form-control', placeholder: "Enter your data" %>
       </div>
+      <%= render partial: 'wikis/form', locals: { f: f } %>
       <%= f.submit "Save", class: 'btn btn-success' %>
     <% end %>
   </div>
