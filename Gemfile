@@ -42,3 +42,5 @@ end
   gem "pundit"
 # stripe integrates payment processing, verifying ccards & securing user data
   gem "stripe"
+# redcarpet is a library with Markdown processing
+  gem 'redcarpet'

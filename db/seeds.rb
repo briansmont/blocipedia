@@ -42,4 +42,4 @@ premium_member = User.create!(
 puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"
-
+puts "#{admin.email} admin created"
