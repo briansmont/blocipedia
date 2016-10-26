@@ -3,6 +3,7 @@ require 'random_data'
 #create users
 5.times do
   User.create!(
+    name:     Faker::Name.name,
     email:    Faker::Internet.email,
     password: Faker::Internet.password
     )
@@ -29,11 +30,13 @@ admin = User.create!(
 )
 
 standard_member = User.create!(
+  name: 'Mr. Standard Member',
   email: 'standard@bloc.com',
   password: 'password',
 )
 
 premium_member = User.create!(
+  name: 'Mr. Premium Member',
   email: 'premium@bloc.com',
   password: 'password',
   role: 'premium_member'
