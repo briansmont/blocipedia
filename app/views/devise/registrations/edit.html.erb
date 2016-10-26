@@ -32,13 +32,14 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "Update", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
-<h3>Downgrade Account?</h3>
+
 <% if current_user.role == 'premium_member' %>
-  <p> <%= link_to "Downgrade to standard membership", downgrade_user_path(current_user), data: {confirm: "Are you sure?"}, method: :post %></p>
+  <h3>Downgrade Account?</h3>
+  <p> <%= button_to "Downgrade to standard membership", downgrade_user_path(current_user), data: {confirm: "Are you sure?"}, method: :post %></p>
 
 <% end %>
 
