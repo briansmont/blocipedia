@@ -34,6 +34,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @all_collaborators = Collaborator.available(@wiki, current_user)
     authorize @wiki
   end
   
