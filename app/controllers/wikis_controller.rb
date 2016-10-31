@@ -1,11 +1,15 @@
 class WikisController < ApplicationController
   include ApplicationHelper
   
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   after_action :verify_authorized, except: [:index]
   
   def index
     @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
+    if current_user.premium_member? || current_user.admin?
+      @wikis = Wiki.all
+    end
   end
 
   def show
@@ -65,7 +69,7 @@ class WikisController < ApplicationController
   
   private
   def wiki_params
-    params.require(:wiki).permit(:title, :body, :public)
+    params.require(:wiki).permit(:title, :body, :private)
   end
   
 

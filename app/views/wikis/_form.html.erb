@@ -7,6 +7,13 @@
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control', placeholder: "Enter your data" %>
   </div>
+  <% if current_user.admin? || current_user.premium_member? %>
+    <div class="form-group">
+      <%= f.label :private, class: 'checkbox' do %>
+        <%= f.check_box :private %> Make wiki private?
+      <% end %>
+    </div>
+  <% end %>
   <%= f.submit "Save", class: 'btn btn-success' %>
 <% end %>
 
