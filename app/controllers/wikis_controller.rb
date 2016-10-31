@@ -5,11 +5,7 @@ class WikisController < ApplicationController
   after_action :verify_authorized, except: [:index]
   
   def index
-    @wikis = Wiki.all
-    @wikis = Wiki.visible_to(current_user)
-    if current_user.premium_member? || current_user.admin?
-      @wikis = Wiki.all
-    end
+    @wikis = policy_scope(Wiki)
   end
 
   def show

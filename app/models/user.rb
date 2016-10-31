@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   
   has_many :charges
   has_many :wikis
+  has_many :collaborators
+  has_many :wikis, through: :collaborators
+  
   
   devise :database_authenticatable, :registerable, 
          :recoverable, :rememberable, :trackable, :validatable
