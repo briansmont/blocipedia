@@ -6,7 +6,7 @@
     <% @wikis.each do |wiki| %>
       <div class="media">
         <h5 class="media-body">
-          <%=link_to markdown(wiki.title), wiki %>
+          <%=link_to markdown(wiki.title), wiki %> <small>created by <%= wiki.user.name %></small>
         </h5>
         <small>
           <%= markdown(wiki.body) %>
