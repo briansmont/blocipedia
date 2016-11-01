@@ -1,10 +1,9 @@
 class CollaboratorsController < ApplicationController
   
-  
+  #before_action :set_wiki
   
   def new
     @user = User.find(params[:user_id])
-    @wiki = Wiki.find(params[:wiki_id])
     @collaborator = Collaborator.new
   end
   
@@ -22,15 +21,16 @@ class CollaboratorsController < ApplicationController
   end
   
   def destroy
-    @wiki = Wiki.find(params[:wiki_id])
+    
     @collaborator = Collaborator.find(params[:id])
+    @wiki = Wiki.find_by(id: params[:collaborator][:wiki_id])
     
     if @collaborator.destroy
       flash[:notice] = "You have removed this collaborator"
       redirect_to @wiki
     else
       flash[:error] = "There was an error removing the collaborator, please retry"
-      render :show
+      redirect_to @wiki
     end
   end
   
@@ -38,5 +38,9 @@ class CollaboratorsController < ApplicationController
   def collaborator_params
     params.require(:collaborator).permit(:user_id, :wiki_id)
   end
+
+  #def set_wiki
+  #  @wiki = Wiki.find(params[:wiki_id])
+  #end
 
 end
