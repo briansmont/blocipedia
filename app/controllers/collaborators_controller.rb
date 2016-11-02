@@ -22,25 +22,20 @@ class CollaboratorsController < ApplicationController
   
   def destroy
     
-    @collaborator = Collaborator.find(params[:id])
-    @wiki = Wiki.find_by(id: params[:collaborator][:wiki_id])
+    @collaborator = Collaborator.find_by(params[:id])
     
     if @collaborator.destroy
       flash[:notice] = "You have removed this collaborator"
-      redirect_to @wiki
+      redirect_to @collaborator.wiki
     else
       flash[:error] = "There was an error removing the collaborator, please retry"
-      redirect_to @wiki
+      redirect_to @collaborator.wiki
     end
   end
-  
+
   private
   def collaborator_params
     params.require(:collaborator).permit(:user_id, :wiki_id)
   end
-
-  #def set_wiki
-  #  @wiki = Wiki.find(params[:wiki_id])
-  #end
 
 end
