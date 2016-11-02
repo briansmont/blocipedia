@@ -15,10 +15,11 @@
       <%= link_to "Delete Wiki", [@wiki], method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete this wiki?" } %>
     </div>
   </div>
-  
+  <br><br>
   <% if @wiki.private %>
+    
     <%= render partial: 'collaborators' %>
-  
+    <h5><%= link_to "Add Collaborators", edit_wiki_path(@wiki) %></h5>
   <% end %>
   
 </div>
