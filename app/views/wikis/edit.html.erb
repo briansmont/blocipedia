@@ -1,4 +1,7 @@
 <h1>Edit Wiki</h1>
+<div class="pull-right">
+  <%= link_to "Back to Wiki", :back %></small>
+</div>
 <div class="row">
   <div class="col-md-4">
     <p>Rules for new wikis:</p>
@@ -10,5 +13,8 @@
   </div>
   <div class="col-md-8">
     <%= render partial: 'form' %>
+    <% if current_user.admin? || @wiki.user_id == current_user.id? %>
+      <%= render partial: 'dropdown' %>
+    <% end %>
   </div>
 </div>

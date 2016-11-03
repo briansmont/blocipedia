@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :collaborators, only: [:create, :destroy]
+  
   
   get 'about' => 'welcome#about'
 

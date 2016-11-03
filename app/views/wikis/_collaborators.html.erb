@@ -1,0 +1,6 @@
+<h3>Collaborators</h3>
+<div>
+  <% @wiki.collaborators.each do |collaborator| %>
+    <h5><strong><%= collaborator.user.name %></strong>, <%= collaborator.user.email %> <%= link_to "", [collaborator], method: :delete, class: 'glyphicon glyphicon-remove', data: {confirm: "are you sure?"} %></h5>
+  <% end %>
+</div>

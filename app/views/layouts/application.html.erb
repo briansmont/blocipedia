@@ -23,8 +23,6 @@
         <li class="pull-right">
           <% if current_user.role == 'standard_member' %>
             <%= link_to "Become a Premium Member!", new_charge_path %>
-          <% else %>
-            <%= link_to "Downgrade to standard membership", edit_user_registration_path %>
           <% end %>
         </li>
       <% else %>

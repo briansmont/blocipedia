@@ -1,7 +1,7 @@
 require 'random_data'
 
 #create users
-5.times do
+10.times do
   User.create!(
     name:     Faker::Name.name,
     email:    Faker::Internet.email,
@@ -10,16 +10,26 @@ require 'random_data'
 end
 users = User.all
 
-#create wikis
-25.times do
-  wiki = Wiki.create!(
+#create private wikis
+15.times do
+  wiki_private = Wiki.create!(
     user: users.sample,
     title: Faker::Lorem.sentence,
-    body: Faker::Lorem.paragraph
+    body: Faker::Lorem.paragraph,
+    private: true
   )
-  wiki.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
-  
-  
+  wiki_private.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
+end
+
+#create public wikis
+15.times do
+  wiki_public = Wiki.create!(
+    user: users.sample,
+    title: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraph,
+    private: false
+  )
+  wiki_public.update_attribute(:created_at, rand(10.minutes .. 1.year).ago)
 end
 
 #create admin
@@ -46,3 +56,5 @@ puts "Seed finished"
 puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"
 puts "#{admin.email} admin created"
+puts "#{premium_member.email} premium member created"
+puts "#{standard_member.email} standard member created"
