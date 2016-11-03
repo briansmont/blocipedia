@@ -1,14 +1,14 @@
 include RandomData
 
 FactoryGirl.define do
-  pw = RandomData.random_sentence
+  pw = Faker::Internet.password
 
   factory :user do
-    name RandomData.random_name
+    name Faker::Name.name
     sequence(:email){|n| "user#{n}@factory.com" }
     password pw
     password_confirmation pw
-    #role :member
-    confirmed_at Date.today
+    role :standard_member
+    confirmed_at Time.now
   end
 end
