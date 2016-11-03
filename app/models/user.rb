@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :wikis, through: :collaborators
   
   
-  devise :database_authenticatable, :registerable, 
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
          
   after_create :send_user_emails
@@ -22,5 +22,9 @@ class User < ActiveRecord::Base
   private
   def send_user_emails
     UserMailer.new_user(self).deliver_now
+  end
+  protected
+  def confirmation_required?
+    true
   end
 end

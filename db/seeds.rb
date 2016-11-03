@@ -34,6 +34,7 @@ end
 
 #create admin
 admin = User.create!(
+  name: "Master",
   email: "briansmont830@gmail.com",
   password: "password",
   role: "admin"
