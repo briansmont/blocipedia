@@ -25,6 +25,6 @@ class User < ActiveRecord::Base
   end
   protected
   def confirmation_required?
-    true
+    false
   end
 end
