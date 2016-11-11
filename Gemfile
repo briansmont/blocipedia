@@ -46,3 +46,5 @@ end
   gem 'redcarpet'
 # friendly_id lets you create 'pretty urls' by using readable strings as if they were integers
   gem 'friendly_id'
+# epic_editor
+  gem 'epic-editor-rails'
