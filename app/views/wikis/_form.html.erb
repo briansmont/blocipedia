@@ -11,6 +11,9 @@
       <%= f.text_area :body, class: 'form-control', placeholder: "Enter your data" %>
     </div>
   </div>
+  <br>
+  <br>
+  <br>
   <div id="epiceditor-preview"></div>
   
   <script src="/static/lib/epiceditor/js/epiceditor.min.js"></script>
@@ -20,11 +23,10 @@
     }).load();
     
     editor.on('update', function() {
-      document.querySelector('#epiceditor-preview').innerHTML = markdown(this.exportFile(null, 'html'));
+      document.querySelector('#epiceditor-preview').innerHTML = (this.exportFile(null, 'html'));
     }).emit('update');
   </script>
-  
-  <br>
+
   <br>
   
   <% if current_user.admin? || @wiki.user_id == current_user.id? %>
