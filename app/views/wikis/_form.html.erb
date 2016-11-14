@@ -3,10 +3,32 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', placeholder: "Enter Title" %>
   </div>
-  <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control', placeholder: "Enter your data" %>
+  
+  <div id="epiceditor">
+    <div class="form-group">
+
+      <%= f.label :body %>
+      <%= f.text_area :body, class: 'form-control', placeholder: "Enter your data" %>
+    </div>
   </div>
+  <br>
+  <br>
+  <br>
+  <div id="epiceditor-preview"></div>
+  
+  <script src="/static/lib/epiceditor/js/epiceditor.min.js"></script>
+  <script>
+    var editor = new EpicEditor({
+      buttons: false,
+    }).load();
+    
+    editor.on('update', function() {
+      document.querySelector('#epiceditor-preview').innerHTML = (this.exportFile(null, 'html'));
+    }).emit('update');
+  </script>
+
+  <br>
+  
   <% if current_user.admin? || @wiki.user_id == current_user.id? %>
     <div class="form-group">
       <%= f.label :private, class: 'checkbox' do %>
