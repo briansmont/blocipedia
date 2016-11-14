@@ -3,8 +3,10 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', placeholder: "Enter Title" %>
   </div>
+  
   <div id="epiceditor">
     <div class="form-group">
+
       <%= f.label :body %>
       <%= f.text_area :body, class: 'form-control', placeholder: "Enter your data" %>
     </div>
@@ -22,7 +24,8 @@
     }).emit('update');
   </script>
   
-  
+  <br>
+  <br>
   
   <% if current_user.admin? || @wiki.user_id == current_user.id? %>
     <div class="form-group">
